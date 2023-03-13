@@ -6,9 +6,11 @@
 - clean: ['~']
 
 - link:
+    ~/.bashrc: bashrc
     ~/.inputrc: inputrc
     ~/.vim: vim
     ~/.vimrc: vimrc
 
 - shell:
   - [git submodule update --init  --recursive, Installing submodules]
+  - [cp /etc/skel/.bashrc ~/.bashrc.default, Copying foundation bashrc]
