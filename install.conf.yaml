@@ -6,6 +6,7 @@
 - clean: ['~']
 
 - link:
+    ~/.inputrc: inputrc
     ~/.vim: vim
     ~/.vimrc: vimrc
 
