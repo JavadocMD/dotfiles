@@ -9,6 +9,9 @@ if [ -f ~/.bashrc.default ]; then
     . ~/.bashrc.default
 fi
 
+# Enable vim bindings in terminal.
+set -o vi
+
 # NVM config
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
