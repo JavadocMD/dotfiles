@@ -1,0 +1,24 @@
+[init]
+defaultBranch = main
+
+[user]
+name = Tyler Coles
+email = tylercoles@gmail.com
+
+[alias]
+ll = log -1 HEAD --name-status
+
+lg1 = log HEAD --graph --abbrev-commit --decorate \
+--format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+
+lg2 = log --graph --abbrev-commit --decorate --all \
+--format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+
+lg = lg1
+
+lb = branch --list --all --verbose
+
+new-branch = "!f(){ git branch \"$1\" && git switch \"$1\"; }; f"
+
+[credential]
+helper = cache
