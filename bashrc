@@ -38,3 +38,13 @@ if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
 
+# Command to export the contents of a .env file
+loadenv() {
+  local env_file="${1:-.env}"
+  if [ -f "$env_file" ]; then
+    export $(cat "$env_file" | xargs)
+    echo "Loaded $env_file"
+  else
+    echo "Error: file $env_file not found"
+  fi
+}
