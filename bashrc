@@ -48,3 +48,38 @@ loadenv() {
     echo "Error: file $env_file not found"
   fi
 }
+
+if command -v python3.11 >/dev/null 2>&1; then
+  revenv_3_11()  {
+    local venv_dir="${1:-.venv}"
+
+    # deactivate and remove the old venv if it exists
+    if command -v deactivate >/dev/null 2>&1; then
+      deactivate
+    fi
+
+    if [ -d "$venv_dir" ]; then
+      echo "Removing existing venv: $venv_dir"
+      rm -rf "$venv_dir"
+    fi
+
+    # create a new venv
+    python3.11 -m venv "$venv_dir"
+
+    # activate venv
+    source "$venv_dir/bin/activate"
+
+    # install requirements if named
+    if [ -f "requirements.txt" ]; then
+      python -m pip install -r requirements.txt
+    fi
+    if [ -f "requirements-dev.txt" ]; then
+      python -m pip install -r requirements-dev.txt
+    fi
+
+    echo
+    echo "New $(python -V) venv has been created (path: $venv_dir) and is now active. Watch out for snakes."
+  }
+
+  alias revenv="revenv_3_11"
+fi
