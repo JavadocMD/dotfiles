@@ -9,7 +9,7 @@ email = tylercoles@gmail.com
 editor = vim
 
 [alias]
-ll = log -1 HEAD --name-status
+ll = log -1 HEAD --compact-summary
 
 lg1 = log HEAD --graph --abbrev-commit --decorate \
 --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
