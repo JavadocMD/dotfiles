@@ -49,6 +49,7 @@ loadenv() {
   fi
 }
 
+# Command to blitz and recreate a python venv (if python is installed).
 if command -v python3.11 >/dev/null 2>&1; then
   revenv_3_11()  {
     local venv_dir="${1:-.venv}"
@@ -83,3 +84,43 @@ if command -v python3.11 >/dev/null 2>&1; then
 
   alias revenv="revenv_3_11"
 fi
+
+# Command to create a symlink. This is overkill but I always mess up the order of arguments.
+create_symlink() {
+    local from=""
+    local to=""
+
+    while [[ $# -gt 0 ]]; do
+        key="$1"
+        case $key in
+            --from)
+                from="$2"
+                shift # past argument
+                shift # past value
+                ;;
+            --to)
+                to="$2"
+                shift # past argument
+                shift # past value
+                ;;
+            *) # unknown option
+                echo "Unknown option: $1"
+                return 1
+                ;;
+        esac
+    done
+
+    if [[ -z $from || -z $to ]]; then
+        echo "Usage: create_symlink --from <source> --to <link>"
+        return 1
+    fi
+
+    if [[ ! -e $from ]]; then
+        echo "Error: Source file/directory '$from' does not exist."
+        return 1
+    fi
+
+    # Create the symlink
+    ln -s "$from" "$to"
+    echo "Symbolic link created: '$to' (linked to '$from')"
+}
