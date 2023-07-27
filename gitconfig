@@ -19,7 +19,7 @@ lg2 = log --graph --abbrev-commit --decorate --all \
 
 lg = lg1
 
-lb = branch --list --all --verbose
+lb = branch --list --all -vv
 
 new-branch = "!f(){ git branch \"$1\" && git switch \"$1\"; }; f"
 
