@@ -23,5 +23,7 @@ lb = branch --list --all -vv
 
 new-branch = "!f(){ git branch \"$1\" && git switch \"$1\"; }; f"
 
+push-it-real-good = "!git remote | xargs -L1 git push --all"
+
 [credential]
 helper = cache
