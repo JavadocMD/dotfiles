@@ -83,6 +83,7 @@ if command -v python3.11 >/dev/null 2>&1; then
   }
 
   alias revenv="revenv_3_11"
+  alias venv="source .venv/bin/activate"
 fi
 
 # Command to create a symlink. This is overkill but I always mess up the order of arguments.
