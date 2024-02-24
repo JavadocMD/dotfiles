@@ -21,6 +21,8 @@ lg = lg1
 
 lb = branch --list --all -vv
 
+fpa = fetch --prune --all
+
 push-it-real-good = "!git remote | xargs -L1 git push --all"
 
 [credential]
