@@ -30,3 +30,6 @@ helper = cache
 
 [merge]
 conflictStyle = zdiff3
+
+[diff]
+algorithm = histogram
