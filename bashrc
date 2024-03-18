@@ -27,11 +27,11 @@ fi
 export CHROME_EXECUTABLE="/snap/bin/chromium"
 
 # Set JAVA_HOME in a way that responds to update-java-alternatives
-JAVA_HOME=$(dirname $(dirname $(readlink -nf /etc/alternatives/java)))
-if [ ! -e "$JAVA_HOME" ]; then
-  JAVA_HOME=""
-fi
-export JAVA_HOME=$JAVA_HOME
+# JAVA_HOME=$(dirname $(dirname $(readlink -nf /etc/alternatives/java)))
+# if [ ! -e "$JAVA_HOME" ]; then
+#   JAVA_HOME=""
+# fi
+# export JAVA_HOME=$JAVA_HOME
 
 # A place for local configuration not checked into repo.
 if [ -f ~/.bashrc.local ]; then
@@ -46,6 +46,17 @@ loadenv() {
     echo "Loaded $env_file"
   else
     echo "Error: file $env_file not found"
+  fi
+}
+
+# Command to activate a python venv.
+ae() {
+  if [ -d ".venv" ]; then
+    source .venv/bin/activate
+  elif [ -d "venv" ]; then
+    source venv/bin/activate
+  else
+    echo "No venv found in current directory."
   fi
 }
 
