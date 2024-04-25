@@ -33,3 +33,6 @@ conflictStyle = zdiff3
 
 [diff]
 algorithm = histogram
+
+[push]
+autoSetupRemote = true
