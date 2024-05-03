@@ -23,6 +23,8 @@ if [ -d ~/snap/flutter/common/flutter/bin ]; then
     export PATH="$PATH:$FLUTTER_BIN"
 fi
 
+alias ll="ls -alh"
+
 # Chrome-like executable
 export CHROME_EXECUTABLE="/snap/bin/chromium"
 
