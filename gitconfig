@@ -23,7 +23,20 @@ lb = branch --list --all -vv
 
 fpa = fetch --prune --all
 
-push-it-real-good = "!git remote | xargs -L1 git push --all"
+push-it-real-good = '!git remote | xargs -L1 git push --all'
+
+# Clean up local after closing a rapid PR in github.
+cpr = "!f() { \
+    GIT_CPR_BRANCH=$(git symbolic-ref --short HEAD); \
+    if [ \"$GIT_CPR_BRANCH\" = \"main\" ]; then \
+        echo \"Cannot run cpr from main: run it from the PR branch.\"; \
+    else \
+        git fetch --all && \
+        git switch main && \
+        git merge && \
+        git branch --delete \"$GIT_CPR_BRANCH\"; \
+    fi; \
+}; f"
 
 [credential]
 helper = cache
