@@ -11,6 +11,7 @@
     ~/.inputrc: inputrc
     ~/.vim: vim
     ~/.vimrc: vimrc
+    ~/.ruff.toml: ruff.toml
 
 - shell:
   - [git submodule update --init  --recursive, Installing submodules]
