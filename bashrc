@@ -138,3 +138,33 @@ create_symlink() {
     ln -s "$from" "$to"
     echo "Symbolic link created: '$to' (linked to '$from')"
 }
+
+filesize() {
+  if [[ $# -lt 1 ]]; then
+    echo "Usage: filesize <glob-patterns>"
+    return 1
+  fi
+
+  python3.11 - "$@" <<'EOF'
+import sys
+import glob
+import os
+
+def human_readable_size(size_bytes):
+    for unit in ['B','KiB','MiB','GiB','TiB','PiB']:
+        if size_bytes < 1024:
+            return f"{size_bytes:.2f} {unit}"
+        size_bytes /= 1024
+    return f"{size_bytes:.2f} EiB"
+
+total = sum(
+    os.path.getsize(f)
+    for pattern in sys.argv[1:]
+    for f in glob.glob(pattern, recursive=True)
+    if os.path.isfile(f)
+)
+
+print(human_readable_size(total))
+EOF
+}
+
