@@ -5,6 +5,14 @@
 
 - clean: ['~']
 
+- shell:
+  - command: |-
+      if [ "$(realpath ~/.bashrc)" != "$(realpath bashrc)" ]; then
+        mv ~/.bashrc ~/.bashrc.orig;
+      fi
+    description: Move original bashrc file to ~/.bashrc.orig (if needed)
+    quiet: true
+
 - link:
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
@@ -12,7 +20,11 @@
     ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.ruff.toml: ruff.toml
+    ~/.local/bin/update-discord: scripts/update-discord.sh
+    ~/.local/bin/filesize: scripts/filesize.py
 
 - shell:
-  - [git submodule update --init  --recursive, Installing submodules]
-  - [cp /etc/skel/.bashrc ~/.bashrc.default, Copying foundation bashrc]
+  - command: git submodule update --init --recursive
+    description: Installing submodules
+  - command: cp /etc/skel/.bashrc ~/.bashrc.default
+    description: Copying foundation bashrc
