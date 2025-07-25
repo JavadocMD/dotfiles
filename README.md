@@ -6,11 +6,11 @@ My machine config powered by [DotBot][dotbot].
 
 ## Usage
 
-Run `./install` on new machines (or any time there are significant conf changes, like new files that haven't been linked on this machine before).
+First install uv and just; then run `just install`.
 
-## Installing vim plugins
+## Adding vim plugins
 
-Typically you can just add the git repo as a submodule in `~/.vim/pack/vendor/start`
+Typically it's sufficient to add the plugin's git repo as a submodule to `~/.vim/pack/vendor/start`.
 
 For example:
 
