@@ -32,7 +32,7 @@ echo "Downloading discord from $location"
 file="$HOME/Downloads/$(basename "$location")"
 wget -qO "$file" $location
 echo "Updating discord..."
-sudo dpkg -i "$file"
+sudo apt install "$file"
 rm "$file"
 
 echo "Updated discord to $online_version"
