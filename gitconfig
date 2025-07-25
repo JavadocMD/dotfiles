@@ -46,3 +46,6 @@ autoSetupRemote = true
 # Include a local-only file for machine config.
 [include]
 path = ~/.gitconfig.local
+
+[help]
+autocorrect = prompt
