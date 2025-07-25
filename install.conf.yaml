@@ -23,8 +23,13 @@
     ~/.local/bin/update-discord: scripts/update-discord.sh
     ~/.local/bin/filesize: scripts/filesize.py
 
+- create:
+  - ~/.local/share/bash-completion/completions
+
 - shell:
   - command: git submodule update --init --recursive
     description: Installing submodules
   - command: cp /etc/skel/.bashrc ~/.bashrc.default
     description: Copying foundation bashrc
+  - command: just --completions bash > ~/.local/share/bash-completion/completions/just
+    description: Install bash completions for just
