@@ -5,6 +5,9 @@ defaultBranch = main
 editor = vim
 
 [alias]
+s = switch
+sc = switch --create
+
 ll = log -1 --compact-summary
 
 lg = log --graph --abbrev-commit --decorate \
