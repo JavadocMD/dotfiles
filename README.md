@@ -18,3 +18,11 @@ For example:
 cd ./vim/pack/vendor/start
 git submodule add https://github.com/preservim/nerdtree.git nerdtree
 ```
+
+## Transfer changes from bashrc to local bashrc
+
+```bash
+git diff --no-color -- bashrc | grep '^+' | grep -v '^+++' | sed 's/^+//' \
+  >> ~/.bashrc.local \
+  && git checkout -- bashrc
+```

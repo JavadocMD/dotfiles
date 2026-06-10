@@ -19,6 +19,7 @@
     ~/.inputrc: inputrc
     ~/.vim: vim
     ~/.vimrc: vimrc
+    ~/.config/uv/uv.toml: uv.toml
     ~/.ruff.toml: ruff.toml
     ~/.local/bin/update-discord: scripts/update-discord.sh
     ~/.local/bin/filesize: scripts/filesize.py
