@@ -3,6 +3,7 @@ defaultBranch = main
 
 [core]
 editor = vim
+excludesFile = ~/.gitignore_global
 
 [alias]
 s = switch

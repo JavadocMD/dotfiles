@@ -16,6 +16,7 @@
 - link:
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
+    ~/.gitignore_global: gitignore_global
     ~/.inputrc: inputrc
     ~/.vim: vim
     ~/.vimrc: vimrc
