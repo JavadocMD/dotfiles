@@ -33,11 +33,29 @@ loadenv() {
   fi
 }
 
-# Create a Dropbox-backed scratch directory for the current project.
-# NOTE: scratch folders/symlinks are ignored by my gitignore_global.
 scratch() {
+  # NOTE: scratch folders/symlinks are ignored by my gitignore_global.
+  case "$1" in
+    -h|--help)
+    cat <<EOF
+Create ./scratch as a symlink into Dropbox.
+
+Usage:
+  scratch [namespace] [project_name]
+
+Arguments:
+  namespace     Optional subdirectory under Dropbox.
+  project_name  Defaults to the current directory name.
+
+Existing ./scratch contents are migrated to the Dropbox folder.
+Set \$DROPBOX_DIR if Dropbox is in a non-standard location.
+EOF
+    return 0
+    ;;
+  esac
+
   local dropbox_dir="${DROPBOX_DIR:-$HOME/Dropbox}"
-  local project_dir="${PWD##*/}"
+  local project_dir="${2:-${PWD##*/}}"
   local scratch_dir="$PWD/scratch"
   local target_dir="$dropbox_dir/${1:+$1/}$project_dir"
 
