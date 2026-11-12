@@ -33,6 +33,17 @@ loadenv() {
   fi
 }
 
+# Halves the size of an image and converts it to webp.
+# Note: requires ffmpeg and probably fails if image has an odd-valued dimension.
+downsize_image() {
+  local IMG="$1"
+  if [ -z "$IMG" ]; then
+    echo "Usage: downsize_image <image>"
+    return 1
+  fi
+  ffmpeg -hide_banner -i "$IMG" -vf "scale=iw/2:ih/2" -q:v 82 "${IMG%.*}.webp"
+}
+
 scratch() {
   # NOTE: scratch folders/symlinks are ignored by my gitignore_global.
   case "$1" in
